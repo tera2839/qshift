@@ -1,0 +1,40 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  h2:
+    console:
+      enabled: true  # H2コンソールを有効化
+      path: /h2-console  # コンソールのURLパス
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql: TRACE
+    org.springframework.jdbc.datasource: DEBUG
+    org.springframework.orm.jpa: DEBUG
+    org.h2.server: DEBUG
+    org.springframework.security: DEBUG
+
+server:
+  servlet:
+    session:
+      timeout: 60m #セッションのタイムアウトを30分に設定
+
+      cookie:
+        max-age: 3600
+
+#debugモードを有効にする設定を追加
+debug: true
